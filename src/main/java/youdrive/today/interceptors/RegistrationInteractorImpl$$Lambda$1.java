@@ -1,0 +1,26 @@
+package youdrive.today.interceptors;
+
+import java.lang.invoke.LambdaForm.Hidden;
+import rx.functions.Action1;
+import youdrive.today.response.BaseResponse;
+
+final /* synthetic */ class RegistrationInteractorImpl$$Lambda$1 implements Action1 {
+    private final RegistrationInteractorImpl arg$1;
+
+    private RegistrationInteractorImpl$$Lambda$1(RegistrationInteractorImpl registrationInteractorImpl) {
+        this.arg$1 = registrationInteractorImpl;
+    }
+
+    private static Action1 get$Lambda(RegistrationInteractorImpl registrationInteractorImpl) {
+        return new RegistrationInteractorImpl$$Lambda$1(registrationInteractorImpl);
+    }
+
+    public static Action1 lambdaFactory$(RegistrationInteractorImpl registrationInteractorImpl) {
+        return new RegistrationInteractorImpl$$Lambda$1(registrationInteractorImpl);
+    }
+
+    @Hidden
+    public void call(Object obj) {
+        this.arg$1.onSuccessInvite((BaseResponse) obj);
+    }
+}
