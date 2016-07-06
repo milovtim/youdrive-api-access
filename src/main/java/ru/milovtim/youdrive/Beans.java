@@ -56,7 +56,7 @@ public class Beans {
 
     @Bean
     LoginUser loginUser() {
-        return new LoginUser("email", "pass");
+        return new LoginUser("milovtim@ya.ru", "LeAB80KSwhMOwI39");
     }
 
     public static class CookieStore implements Iterable<String> {
