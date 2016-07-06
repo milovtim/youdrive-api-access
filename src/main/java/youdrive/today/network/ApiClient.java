@@ -1,33 +1,17 @@
 package youdrive.today.network;
 
 import com.squareup.okhttp.OkHttpClient;
-import java.io.File;
-import java.util.Map;
-import java.util.concurrent.TimeUnit;
 import retrofit.RestAdapter.Builder;
 import retrofit.RestAdapter.LogLevel;
 import retrofit.client.OkClient;
 import retrofit.mime.TypedFile;
 import rx.Observable;
-import rx.android.schedulers.AndroidSchedulers;
-import rx.schedulers.Schedulers;
-import youdrive.today.models.ApiCommand;
-import youdrive.today.models.Car;
-import youdrive.today.models.Command;
-import youdrive.today.models.CreditCardModel;
-import youdrive.today.models.CreditCardResponse;
-import youdrive.today.models.InviteUser;
-import youdrive.today.models.LoginUser;
-import youdrive.today.models.RegistrationUser;
-import youdrive.today.response.BaseResponse;
-import youdrive.today.response.CarResponse;
-import youdrive.today.response.CommandResponse;
-import youdrive.today.response.LoginResponse;
-import youdrive.today.response.PolygonResponse;
-import youdrive.today.response.RegionsResponse;
-import youdrive.today.response.RegistrationModel;
-import youdrive.today.response.UploadCareResponse;
-import youdrive.today.response.UploadGroupResponse;
+import youdrive.today.models.*;
+import youdrive.today.response.*;
+
+import java.io.File;
+import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 public class ApiClient {
     private static String HOST;
@@ -44,14 +28,14 @@ public class ApiClient {
     public ApiClient() {
         OkHttpClient client = new OkHttpClient();
         client.setConnectTimeout(5, TimeUnit.SECONDS);
-        client.interceptors().add(new AddCookiesInterceptor());
-        client.interceptors().add(new ReceivedCookiesInterceptor());
+//        client.interceptors().add(new AddCookiesInterceptor());
+//        client.interceptors().add(new ReceivedCookiesInterceptor());
         this.mService = new Builder().setEndpoint(HOST).setClient(new CustomClient(client)).setLogLevel(LogLevel.NONE).build().create(CarsharingService.class);
-        this.mUploadService = (UploadService) new Builder().setEndpoint("https://upload.uploadcare.com").setClient(new OkClient(new OkHttpClient())).setLogLevel(LogLevel.FULL).build().create(UploadService.class);
+        this.mUploadService = new Builder().setEndpoint("https://upload.uploadcare.com").setClient(new OkClient(new OkHttpClient())).setLogLevel(LogLevel.FULL).build().create(UploadService.class);
     }
 
     public Observable<LoginResponse> login(String email, String password) {
-        return this.mService.login(new LoginUser(email, password));
+        return /*this.mService.login(new LoginUser(email, password))*/ null;
     }
 
     public Observable<BaseResponse> logout() {
@@ -63,7 +47,8 @@ public class ApiClient {
     }
 
     public Observable<CarResponse> getStatusCars() {
-        return this.mService.getStatusCars();
+        return null;
+//        return this.mService.getStatusCars();
     }
 
     public Observable<PolygonResponse> getPolygon() {

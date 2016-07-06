@@ -1,11 +1,7 @@
 package youdrive.today;
 
-import java.util.concurrent.TimeUnit;
-import rx.Observable;
 import rx.Observable.OnSubscribe;
 import rx.Subscriber;
-import rx.android.schedulers.AndroidSchedulers;
-import rx.schedulers.Schedulers;
 import youdrive.today.listeners.RequestListener;
 import youdrive.today.response.BaseResponse;
 
@@ -25,11 +21,11 @@ public class BaseObservable {
         }
     }
 
-    public static Observable<BaseResponse> ApiCall(RequestListener listener) {
-        return Observable.create(new C17321(listener)).retry(3).subscribeOn(Schedulers.newThread()).observeOn(AndroidSchedulers.mainThread());
-    }
+//    public static Observable<BaseResponse> ApiCall(RequestListener listener) {
+//        return Observable.create(new C17321(listener)).retry(3).subscribeOn(Schedulers.newThread()).observeOn(AndroidSchedulers.mainThread());
+//    }
 
-    public static Observable<BaseResponse> ApiIntervalCall(RequestListener listener, int interval) {
-        return Observable.interval((long) interval, TimeUnit.SECONDS).map(BaseObservable$$Lambda$1.lambdaFactory$(listener)).retry(3).subscribeOn(Schedulers.newThread()).observeOn(AndroidSchedulers.mainThread());
-    }
+//    public static Observable<BaseResponse> ApiIntervalCall(RequestListener listener, int interval) {
+//        return Observable.interval((long) interval, TimeUnit.SECONDS).map(BaseObservable$$Lambda$1.lambdaFactory$(listener)).retry(3).subscribeOn(Schedulers.newThread()).observeOn(AndroidSchedulers.mainThread());
+//    }
 }

@@ -1,6 +1,5 @@
 package youdrive.today.models;
 
-import com.google.android.gms.maps.model.LatLng;
 
 public class Coord {
     private double latitude;

@@ -1,11 +1,9 @@
 package youdrive.today.interceptors;
 
 import com.google.gson.Gson;
-import java.util.concurrent.TimeUnit;
 import retrofit.RetrofitError;
 import retrofit.mime.TypedByteArray;
 import rx.Subscription;
-import rx.android.schedulers.AndroidSchedulers;
 import rx.subscriptions.CompositeSubscription;
 import youdrive.today.App;
 import youdrive.today.listeners.RegistrationActionListener;
@@ -26,7 +24,7 @@ public class RegistrationInteractorImpl implements RegistrationInteractor {
 
     public void getInvite(String email, Long phone, String region, boolean readyToUse, RegistrationActionListener listener) {
         this.mListener = listener;
-        this.subscriptions.add(this.mApiClient.invite(email, phone, region, readyToUse).retry(3).timeout(5, TimeUnit.SECONDS).observeOn(AndroidSchedulers.mainThread()).subscribe(RegistrationInteractorImpl$$Lambda$1.lambdaFactory$(this), RegistrationInteractorImpl$$Lambda$2.lambdaFactory$(this)));
+//        this.subscriptions.add(this.mApiClient.invite(email, phone, region, readyToUse).retry(3).timeout(5, TimeUnit.SECONDS).observeOn(AndroidSchedulers.mainThread()).subscribe(RegistrationInteractorImpl$$Lambda$1.lambdaFactory$(this), RegistrationInteractorImpl$$Lambda$2.lambdaFactory$(this)));
     }
 
     private void onSuccessInvite(BaseResponse response) {
@@ -44,7 +42,7 @@ public class RegistrationInteractorImpl implements RegistrationInteractor {
 
     public void getRegions(RegistrationActionListener listener) {
         this.mListener = listener;
-        this.subscriptions.add(this.mApiClient.getRegions().retry(3).timeout(5, TimeUnit.SECONDS).observeOn(AndroidSchedulers.mainThread()).subscribe(RegistrationInteractorImpl$$Lambda$3.lambdaFactory$(this), RegistrationInteractorImpl$$Lambda$4.lambdaFactory$(this)));
+//        this.subscriptions.add(this.mApiClient.getRegions().retry(3).timeout(5, TimeUnit.SECONDS).observeOn(AndroidSchedulers.mainThread()).subscribe(RegistrationInteractorImpl$$Lambda$3.lambdaFactory$(this), RegistrationInteractorImpl$$Lambda$4.lambdaFactory$(this)));
     }
 
     public void onRegionsRespnseSuccess(RegionsResponse response) {

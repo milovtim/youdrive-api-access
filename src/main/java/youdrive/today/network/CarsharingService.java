@@ -24,15 +24,34 @@ import youdrive.today.response.RegionsResponse;
 import youdrive.today.response.RegistrationModel;
 
 public interface CarsharingService {
+    @POST("/session")
+    LoginResponse login(@Body LoginUser loginUser);
+
+    @DELETE("/session")
+    Observable<BaseResponse> logout();
+
     @POST("/order")
     Observable<CarResponse> booking(@Body Car car);
-
-    @POST("/action")
-    Observable<CommandResponse> command(@Body ApiCommand apiCommand);
 
     @DELETE("/order")
     Observable<CommandResponse> complete();
 
+
+    @POST("/action")
+    Observable<CommandResponse> command(@Body ApiCommand apiCommand);
+
+
+    @GET("/action/{token}")
+    Observable<CommandResponse> result(@Path("token") String str);
+
+
+    @GET("/status")
+    CarResponse getStatusCars();
+
+    @GET("/status")
+    Observable<CarResponse> getStatusCars(@Query("lat") double d, @Query("lon") double d2);
+
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     @GET("/create-account/{registrationId}")
     Observable<RegistrationModel> createAccount(@Path("registrationId") String str);
 
@@ -45,26 +64,11 @@ public interface CarsharingService {
     @GET("/regions")
     Observable<RegionsResponse> getRegions();
 
-    @GET("/status")
-    Observable<CarResponse> getStatusCars();
-
-    @GET("/status")
-    Observable<CarResponse> getStatusCars(@Query("lat") double d, @Query("lon") double d2);
-
     @POST("/cards/init")
     Observable<CreditCardResponse> initCreditCard(@Body CreditCardModel creditCardModel);
 
     @POST("/invite")
     Observable<BaseResponse> invite(@Body InviteUser inviteUser);
-
-    @POST("/session")
-    Observable<LoginResponse> login(@Body LoginUser loginUser);
-
-    @DELETE("/session")
-    Observable<BaseResponse> logout();
-
-    @GET("/action/{token}")
-    Observable<CommandResponse> result(@Path("token") String str);
 
     @PUT("/create-account/{registrationId}")
     Observable<RegistrationModel> updateAccount(@Path("registrationId") String str, @Body RegistrationUser registrationUser);

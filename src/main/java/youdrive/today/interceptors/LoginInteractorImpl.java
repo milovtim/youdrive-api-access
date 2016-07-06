@@ -1,13 +1,10 @@
 package youdrive.today.interceptors;
 
 import com.google.gson.Gson;
-import java.util.concurrent.TimeUnit;
 import retrofit.RetrofitError;
 import retrofit.mime.TypedByteArray;
 import rx.Observer;
 import rx.Subscription;
-import rx.android.schedulers.AndroidSchedulers;
-import rx.schedulers.Schedulers;
 import rx.subscriptions.Subscriptions;
 import youdrive.today.App;
 import youdrive.today.listeners.LoginActionListener;
@@ -28,7 +25,7 @@ public class LoginInteractorImpl implements LoginInteractor, Observer<LoginRespo
 
     public void login(String email, String password, LoginActionListener listener) {
         this.mListener = listener;
-        this.subscription = this.mApiClient.login(email, password).retry(3).timeout(5, TimeUnit.SECONDS).subscribeOn(Schedulers.newThread()).observeOn(AndroidSchedulers.mainThread()).subscribe((Observer) this);
+//        this.subscription = this.mApiClient.login(email, password).retry(3).timeout(5, TimeUnit.SECONDS).subscribeOn(Schedulers.newThread()).observeOn(AndroidSchedulers.mainThread()).subscribe((Observer) this);
     }
 
     public Subscription getSubscription() {
