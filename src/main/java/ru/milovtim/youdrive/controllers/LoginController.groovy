@@ -5,14 +5,12 @@ import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
 import youdrive.today.models.LoginUser
 import youdrive.today.network.CarsharingService
-import youdrive.today.response.BaseResponse
-import youdrive.today.response.LoginResponse
 
 import static org.springframework.web.bind.annotation.RequestMethod.DELETE
 import static org.springframework.web.bind.annotation.RequestMethod.GET
 
 @RestController
-@RequestMapping("/login")
+@RequestMapping("/api/login")
 class LoginController {
 
     @Autowired

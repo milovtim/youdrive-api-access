@@ -9,3 +9,12 @@ youdrive:
 spring:
   freemarker:
     cache: false
+
+security:
+  basic:
+    enabled: true
+  user:
+    name: u
+    password: p
+    role: USER
+  ignored: /webjars/jquery/3.0.0/jquery.min.js
