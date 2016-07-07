@@ -39,11 +39,13 @@ public class ApiClient {
     }
 
     public Observable<BaseResponse> logout() {
-        return this.mService.logout();
+//        return this.mService.logout();
+        return null;
     }
 
     public Observable<CarResponse> getStatusCars(double lat, double lon) {
-        return this.mService.getStatusCars(lat, lon);
+        return null;
+//        return this.mService.getStatusCars(lat, lon);
     }
 
     public Observable<CarResponse> getStatusCars() {
@@ -64,19 +66,23 @@ public class ApiClient {
     }
 
     public Observable<CarResponse> booking(String id, double lat, double lon) {
-        return this.mService.booking(new Car(id, (float) lat, (float) lon));
+        return null;
+//        return this.mService.booking(new Car(id, (float) lat, (float) lon));
     }
 
     public Observable<CommandResponse> command(Command command) {
-        return this.mService.command(new ApiCommand(command.toString()));
+//        return this.mService.command(new ApiCommand(command.toString()));
+        return null;
     }
 
     public Observable<CommandResponse> complete() {
-        return this.mService.complete();
+//        return this.mService.complete();
+        return null;
     }
 
     public Observable<CommandResponse> result(String token) {
-        return this.mService.result(token);
+//        return this.mService.result(token);
+        return null;
     }
 
 //    public Observable<RegistrationModel> createUser() {

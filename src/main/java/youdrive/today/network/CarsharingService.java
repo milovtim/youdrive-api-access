@@ -28,28 +28,28 @@ public interface CarsharingService {
     LoginResponse login(@Body LoginUser loginUser);
 
     @DELETE("/session")
-    Observable<BaseResponse> logout();
+    BaseResponse logout();
 
     @POST("/order")
-    Observable<CarResponse> booking(@Body Car car);
+    CarResponse booking(@Body Car car);
 
     @DELETE("/order")
-    Observable<CommandResponse> complete();
+    CommandResponse complete();
 
 
     @POST("/action")
-    Observable<CommandResponse> command(@Body ApiCommand apiCommand);
+    CommandResponse command(@Body ApiCommand apiCommand);
 
 
     @GET("/action/{token}")
-    Observable<CommandResponse> result(@Path("token") String str);
+    CommandResponse result(@Path("token") String str);
 
 
     @GET("/status")
     CarResponse getStatusCars();
 
     @GET("/status")
-    Observable<CarResponse> getStatusCars(@Query("lat") double d, @Query("lon") double d2);
+    CarResponse getStatusCars(@Query("lat") double d, @Query("lon") double d2);
 
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     @GET("/create-account/{registrationId}")

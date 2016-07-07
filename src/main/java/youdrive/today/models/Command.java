@@ -1,14 +1,14 @@
 package youdrive.today.models;
 
 public enum Command {
-    OPEN("open"),
-    CLOSE("close"),
-    COMPLETE("complete"),
-    TRANSFER("transfer");
+    OPEN("open"),//наверно открыть машину
+    CLOSE("close"),//это -- закрыть
+    COMPLETE("complete"),//завершить аренду
+    TRANSFER("transfer");//передать машину другому вне домашней зоны
     
     private final String text;
 
-    private Command(String text) {
+    Command(String text) {
         this.text = text;
     }
 

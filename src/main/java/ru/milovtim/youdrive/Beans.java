@@ -1,30 +1,34 @@
 package ru.milovtim.youdrive;
 
-import com.google.common.collect.Sets;
 import com.squareup.okhttp.OkHttpClient;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import retrofit.RestAdapter;
+import ru.milovtim.youdrive.session.CookieStore;
 import youdrive.today.models.LoginUser;
 import youdrive.today.network.AddCookiesInterceptor;
 import youdrive.today.network.CarsharingService;
 import youdrive.today.network.CustomClient;
 import youdrive.today.network.ReceivedCookiesInterceptor;
 
-import java.util.Iterator;
-import java.util.Set;
 import java.util.concurrent.TimeUnit;
+
+import static retrofit.RestAdapter.LogLevel.FULL;
+import static retrofit.RestAdapter.LogLevel.NONE;
 
 @Configuration
 public class Beans {
 
-    String host = "https://youdrive.today";
+    @Autowired
+    AppProperties appProps;
+
     @Bean
     CarsharingService service(OkHttpClient client) {
         return new RestAdapter.Builder()
-                .setEndpoint(host)
+                .setEndpoint(appProps.getApiHost())
                 .setClient(new CustomClient(client))
-                .setLogLevel(RestAdapter.LogLevel.HEADERS)
+                .setLogLevel(appProps.isLogApiHttpRequests()? FULL: NONE)
                 .build()
                 .create(CarsharingService.class);
     }
@@ -40,11 +44,6 @@ public class Beans {
     }
 
     @Bean
-    CookieStore cookieStorage() {
-        return new CookieStore();
-    }
-
-    @Bean
     AddCookiesInterceptor addStoredCookiesToRequests(CookieStore cookieStorage) {
         return new AddCookiesInterceptor(cookieStorage);
     }
@@ -56,20 +55,8 @@ public class Beans {
 
     @Bean
     LoginUser loginUser() {
-        return new LoginUser("milovtim@ya.ru", "LeAB80KSwhMOwI39");
-    }
-
-    public static class CookieStore implements Iterable<String> {
-        Set<String> cookies = Sets.newConcurrentHashSet();
-
-        @Override
-        public Iterator<String> iterator() {
-            return cookies.iterator();
-        }
-
-        public void addCookie(String cookie) {
-            cookies.add(cookie);
-        }
+        final AppProperties.Account account = appProps.getAccount();
+        return new LoginUser(account.getEmail(), account.getPassword());
     }
 
 }

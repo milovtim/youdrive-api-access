@@ -1,20 +1,16 @@
 package youdrive.today.network;
 
 import com.squareup.okhttp.Interceptor;
-import com.squareup.okhttp.Interceptor.Chain;
 import com.squareup.okhttp.Response;
 import java.io.IOException;
-import java.util.HashSet;
-import java.util.Set;
 
-import ru.milovtim.youdrive.Beans;
-import youdrive.today.App;
+import ru.milovtim.youdrive.session.CookieStore;
 
 public class ReceivedCookiesInterceptor implements Interceptor {
 
-    private final Beans.CookieStore cookieStorage;
+    private final CookieStore cookieStorage;
 
-    public ReceivedCookiesInterceptor(Beans.CookieStore cookieStorage) {
+    public ReceivedCookiesInterceptor(CookieStore cookieStorage) {
         this.cookieStorage = cookieStorage;
     }
 

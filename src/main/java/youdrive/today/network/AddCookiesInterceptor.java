@@ -3,16 +3,15 @@ package youdrive.today.network;
 import com.squareup.okhttp.Interceptor;
 import com.squareup.okhttp.Request.Builder;
 import com.squareup.okhttp.Response;
-import ru.milovtim.youdrive.Beans;
+import ru.milovtim.youdrive.session.CookieStore;
 
 import java.io.IOException;
-import java.util.Set;
 
 public class AddCookiesInterceptor implements Interceptor {
 
-    private final Beans.CookieStore cookies;
+    private final CookieStore cookies;
 
-    public AddCookiesInterceptor(Beans.CookieStore cookies) {
+    public AddCookiesInterceptor(CookieStore cookies) {
         this.cookies = cookies;
     }
 

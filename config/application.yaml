@@ -1,0 +1,11 @@
+youdrive:
+  apiHost: https://youdrive.today
+  account:
+    email: milovtim@ya.ru
+    password: FyPfylLFshAW93@w
+
+  logApiHttpRequests: false
+
+spring:
+  freemarker:
+    cache: false
