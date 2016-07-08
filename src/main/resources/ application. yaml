@@ -1,0 +1,20 @@
+youdrive:
+  apiHost: https://youdrive.today
+  account:
+    email: milovtim@ya.ru
+    password: FyPfylLFshAW93@w
+
+  logApiHttpRequests: false
+
+spring:
+  freemarker:
+    cache: true
+
+security:
+  basic:
+    enabled: true
+  user:
+    name: tim
+    password: 132456
+    role: USER
+  ignored: /webjars/jquery/3.0.0/jquery.min.js
