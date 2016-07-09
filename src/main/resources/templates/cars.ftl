@@ -7,6 +7,10 @@
 </head>
 <body>
 
+    <div id="loginBlock">
+        <div><input type="button" value="api login"></div>
+        <div class="api-login-result"></div>
+    </div>
     <div id="carList">
         <div><input type="button" value="update list"></div>
         <div class="car-list"></div>
@@ -24,7 +28,13 @@ $(function () {
 
     toggleWatch();
 
-    $carList.on('click', 'input:button', function (e) {
+    $('#loginBlock').on('click', "input:button", function (e) {
+        $.get('/api/login').done(function () {
+            $(e.delegateTarget).find('.api-login-result').text('logged in');
+        })
+    });
+
+    $carList.on('click', 'input:button', function () {
         loadCarList($carList);
     });
 
@@ -40,7 +50,7 @@ $(function () {
             contentType: 'application/json',
             processData: false
         }).done(function () {
-            window.location.href = '/page/car'
+            window.location.href = '/car'
         })
     });
 });
@@ -67,7 +77,7 @@ $(function () {
             .done(function (data) {
                 if (data && $.isArray(data)) {
                     var list = $listBlock.find('.car-list'); list.empty();
-                    var $carLink = $('<a/>', {href: '#', class: 'carLink'});
+                    var $carLink = $('<a/>', {href: '#', 'class': 'carLink'});
                     var $mapLink = $('<a/>', {text: 'on map'});
                     $.each(data, function (idx, car) {
                         var latlng = car.coord;

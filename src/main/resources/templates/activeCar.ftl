@@ -30,7 +30,7 @@
             <p></p>
         </div>
     </div>
-    <div><a href="/page/cars"><< Back <<</a></div>
+    <div><a href="/cars"><< Back <<</a></div>
 
 <script type="text/javascript">
     $(function () {

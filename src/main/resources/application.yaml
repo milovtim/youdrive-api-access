@@ -9,6 +9,9 @@ youdrive:
 spring:
   freemarker:
     cache: true
+  mvc:
+    favicon:
+      enabled: false
 
 security:
   basic:
