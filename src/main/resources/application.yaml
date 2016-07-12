@@ -7,8 +7,9 @@ youdrive:
   logApiHttpRequests: false
 
 spring:
-  freemarker:
-    cache: true
+  resources:
+    chain:
+      enabled: true
   mvc:
     favicon:
       enabled: false
@@ -20,4 +21,4 @@ security:
     name: tim
     password: 132456
     role: USER
-  ignored: /webjars/jquery/3.0.0/jquery.min.js
+  ignored: /js/**
